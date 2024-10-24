@@ -1,1 +1,98 @@
-<p>penis</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the League of Legends Champion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2C3E50;
+            color: #ECF0F1;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #E74C3C;
+        }
+
+        .champion-image {
+            width: 300px;
+            height: 300px;
+            background-color: #34495E;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #E74C3C;
+            color: #ECF0F1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #C0392B;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .correct {
+            color: #27AE60;
+        }
+
+        .incorrect {
+            color: #E74C3C;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Guess the League of Legends Champion</h1>
+        <div class="champion-image" id="championImage"></div>
+        <input type="text" id="guessInput" placeholder="Enter champion name">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // List of some champions (replace with full list)
+        const champions = ["Ahri", "Akali", "Ashe", "Garen", "Jinx", "Katarina", "Lux", "Teemo", "Zed"];
+
+        // Pick a random champion
+        let randomChampion = champions[Math.floor(Math.random() * champions.length)];
+
+        // Check user's guess
+        function checkGuess() {
+            const userGuess = document.getElementById("guessInput").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (userGuess.toLowerCase() === randomChampion.toLowerCase()) {
+                resultDiv.textContent = `Correct! The champion was ${randomChampion}.`;
+                resultDiv.className = "correct";
+            } else {
+                resultDiv.textContent = `Incorrect! Try again.`;
+                resultDiv.className = "incorrect";
+            }
+        }
+    </script>
+</body>
+</html>
